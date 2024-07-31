@@ -1,4 +1,4 @@
-# KMP Compose Gradle Skeleton
+# Lottie example in Compose Multiplatform
 
 This is a Kotlin Multiplatform project targeting Android, iOS.
 
