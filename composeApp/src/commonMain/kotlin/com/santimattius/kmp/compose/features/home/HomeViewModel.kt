@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.santimattius.kmp.compose.core.data.PictureRepository
 import com.santimattius.kmp.compose.core.domain.Picture
 import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
@@ -35,6 +36,7 @@ class HomeViewModel(
     fun randomImage() {
         _state.update { it.copy(isLoading = true, hasError = false) }
         viewModelScope.launch(exceptionHandler) {
+            delay(5_000L)
             repository.random().onSuccess { picture ->
                 _state.update { it.copy(isLoading = false, data = picture) }
             }.onFailure {

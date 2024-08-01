@@ -14,7 +14,7 @@ fun Navigation(
 ) {
     NavHost(
         navController = navController,
-        startDestination = Splash
+        startDestination = Home //TODO: launch home
     ) {
         composable<Splash> {
             SplashScreen {

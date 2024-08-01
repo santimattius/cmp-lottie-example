@@ -22,8 +22,9 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.santimattius.kmp.compose.core.ui.components.AppBar
+import com.santimattius.kmp.compose.core.ui.components.Center
 import com.santimattius.kmp.compose.core.ui.components.ErrorView
-import com.santimattius.kmp.compose.core.ui.components.LoadingIndicator
+import com.santimattius.kmp.compose.core.ui.components.LottieLoader
 import com.santimattius.kmp.compose.core.ui.components.NetworkImage
 import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.annotation.KoinExperimentalAPI
@@ -48,7 +49,12 @@ fun HomeScreen(
             contentAlignment = Alignment.Center
         ) {
             when {
-                state.isLoading -> LoadingIndicator()
+                state.isLoading -> Center {
+                    LottieLoader(
+                        resource = "files/avocado.json",
+                        contentDescription = "Loading"
+                    )
+                }
 
                 state.data == null || state.hasError -> {
                     ErrorView(message = "An error occurred while updating the image")
